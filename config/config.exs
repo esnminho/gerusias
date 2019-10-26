@@ -25,10 +25,6 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config :torch,
-  otp_app: :gerusias,
-  template_format: "eex" || "slim"
-
 config :gerusias, :pow,
   user: Gerusias.Users.User,
   repo: Gerusias.Repo,

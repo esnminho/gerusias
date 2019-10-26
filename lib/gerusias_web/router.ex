@@ -50,10 +50,14 @@ defmodule GerusiasWeb.Router do
     pipe_through [:browser, :protected]
 
     get "/home", PageController, :index
-    # Add your protected routes here
+    resources "/badges", BadgeController, only: [:index, :show]
+    resources "/redeems", RedeemController, only: [:index]
   end
 
   scope "/admin", GerusiasWeb do
     pipe_through [:browser, :protected, :admin]
+
+    resources "/badges", BadgeController
+    resources "/redeems", RedeemController
   end
 end

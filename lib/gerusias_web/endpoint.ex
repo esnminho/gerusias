@@ -49,6 +49,7 @@ defmodule GerusiasWeb.Endpoint do
     signing_salt: "Pio+LGx7"
 
   plug Pow.Plug.Session, otp_app: :gerusias
+  plug GerusiasWeb.ReloadUserPlug
 
   plug GerusiasWeb.Router
 end

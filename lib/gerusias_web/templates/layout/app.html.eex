@@ -4,21 +4,35 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Gerusias . PN ESN PT</title>
+    <title>Gerusias</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body>
     <header>
-      <section class="container">
-        <nav role="navigation">
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-          </ul>
-        </nav>
-        <a href="https://www.esnminho.org/" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/logo.png") %>" alt="ESN Minho"/>
-        </a>
-      </section>
+      <%= if Pow.Plug.current_user(@conn) do %>
+        <section class="container">
+          <nav role="navigation">
+            <ul>
+              <li><%= button "Profile", to: Routes.badge_path(@conn, :index), method: :get, class: "btn btn-danger" %></li>
+              <li><%= button "Badges", to: Routes.badge_path(@conn, :index), method: :get, class: "btn btn-danger" %></li>
+              <li><%= button "Redeems", to: Routes.redeem_path(@conn, :index), method: :get, class: "btn btn-danger" %></li>
+              <li><%= button "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete, class: "btn btn-danger" %></li>
+            </ul>
+          </nav>
+
+          <%= link to: Routes.page_path(@conn, :index),  style: "width:20%" do %>
+              <img src="<%= Routes.static_path(@conn, "/images/logo.png") %>" alt="ESN Minho" class="img-fluid"/>
+            <% end %>
+        </section>
+      <% else %>
+        <section class="container">
+          <nav role="navigation">
+            <%= link to: Routes.page_path(@conn, :index) do %>
+              <img src="<%= Routes.static_path(@conn, "/images/logo.png") %>" alt="ESN Minho"/>
+            <% end %>
+          </nav>
+        </section>
+      <% end %>
     </header>
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

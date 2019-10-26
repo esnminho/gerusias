@@ -1,0 +1,8 @@
+<h1>Show Redeem</h1>
+
+<ul>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.redeem_path(@conn, :edit, @redeem) %></span>
+<span><%= link "Back", to: Routes.redeem_path(@conn, :index) %></span>
