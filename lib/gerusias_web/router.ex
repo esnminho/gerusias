@@ -52,11 +52,12 @@ defmodule GerusiasWeb.Router do
     get "/home", PageController, :index
     resources "/badges", BadgeController, only: [:index, :show]
     resources "/redeems", RedeemController, only: [:index]
+    resources "/profiles", ProfileController, only: [:index, :show, :edit]
   end
 
   scope "/admin", GerusiasWeb do
     pipe_through [:browser, :protected, :admin]
-
+    resources "/profiles", ProfileController
     resources "/badges", BadgeController
     resources "/redeems", RedeemController
   end
