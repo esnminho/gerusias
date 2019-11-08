@@ -1,0 +1,30 @@
+<h1>Listing Badges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for badge <- @badges do %>
+    <tr>
+      <td><%= badge.name %></td>
+      <td><%= badge.description %></td>
+      <td><%= badge.type %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.badge_path(@conn, :show, badge) %></span>
+        <span><%= link "Edit", to: Routes.badge_path(@conn, :edit, badge) %></span>
+        <span><%= link "Delete", to: Routes.badge_path(@conn, :delete, badge), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Badge", to: Routes.badge_path(@conn, :new) %></span>

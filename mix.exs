@@ -46,7 +46,14 @@ defmodule Gerusias.MixProject do
       {:pow, "~> 1.0.13"},
       {:phoenix_live_view, "~> 0.3.0"},
       {:floki, ">= 0.0.0", only: :test},
-      {:torch, "~> 2.0"}
+      {:arc, "~> 0.11.0"},
+
+      # If using Amazon S3:
+      {:ex_aws, "~> 2.0"},
+      {:ex_aws_s3, "~> 2.0"},
+      {:hackney, "~> 1.6"},
+      {:poison, "~> 3.1"},
+      {:sweet_xml, "~> 0.6"}
     ]
   end
 

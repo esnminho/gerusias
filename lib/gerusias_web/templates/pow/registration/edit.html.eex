@@ -22,6 +22,22 @@
   <%= label f, :confirm_password %>
   <%= password_input f, :confirm_password %>
   <%= error_tag f, :confirm_password %>
+
+  <%= inputs_for f, :profile, fn p -> %>
+    <div class="form-group">
+      <%= label p, :name, class: "control-label" %>
+      <%= text_input p, :name, class: "form-control" %>
+      <%= error_tag p, :name %>
+
+      <%= label p, :description, class: "control-label" %>
+      <%= text_input p, :description, class: "form-control" %>
+      <%= error_tag p, :description %>
+
+      <%= label p, :name, class: "control-label" %>
+      <%= text_input p, :name, class: "form-control" %>
+      <%= error_tag p, :name %>
+    </div>
+  <% end %>
   <%= if @changeset.data.unconfirmed_email do %>
     <div>
       <p>Click the link in the confirmation email to change your email to <%= @changeset.data.unconfirmed_email %></span>.</p>
